@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Personal - Start Bootstrap Theme</title>
+        <title>Mental Health and Wellness - OE Program</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Custom Google font-->
@@ -16,65 +16,414 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet">
-    </head>
-    <body>
-        <header>
-            <!-- Navigation-->
-                        <div class="container navbar-container">
-                            <div class="logo">
-                                <img src="assets/logo.png" alt="OE Logo">
-                            </div>
-                        <nav class="nav-pill">
-                            <ul>
-                                    <a  href="index.html" class="nav-item">Home</a>
-                                    <a  href="about.html" class="nav-item">About</a>
-                                    <a  href="blog.html" class="nav-item">Blog</a>
-                                    <a  href="contact.html" class="nav-item">Contact</a>
-                            </ul>
-                        </nav>
-                        <div class="main">
-                                <label for="search-input" class="visually-hidden">
-                                    Search 
-                                </label>
-                                <input
-                                id="search-input"
-                                placeholder="Search..."
-                                type="text"
-                                class="input"
-                                aria-label="Search"
-                                autocomplete="off"/>
-                            
-                            </div>
-                            <a href="#" class="signup-button">Sign Up</a>
-                        </div>
-                        </div>
-                            <main class="hero-section">
-                            <div class="container hero-content">
-                                <div class="text-content">
-                                    <h1> Mental Health and Wellness Digital Care Program : OE</h1>
-                                    
-                                    <a href="about.html" class="discover-button">
-                                        Discover More 
-                                        <i class="bi bi-arrow-right"></i>
-                                    </a>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            color: #000000;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 40px;
+        }
+        
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+        }
 
-                                <div>
-                                    </div>
-                            </div>
-                            </main>
-                    </div>
-                </div>
-                <div class="filler-space"></div>
-        </header>
-        <!-- Footer-->
-        <footer class="footer-base">
-            <div class="container px-5">
-            <p>Copyright &copy; Your Website 2023</p>
+        .logo img {
+            width: 130px;   /* adjust logo size */
+            height: auto;
+            display: block;
+
+        }
+
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            margin-bottom: 40px;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .nav-group {
+            display: flex;
+            background-color: #ffffff;
+            border-radius: 50px;
+            padding: 10px 40px;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .nav-group a {
+            text-decoration: none;
+            color: #000;
+            font-size: 15px;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-group a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #d62294; /* hover underline color */
+            transition: width 0.3s;
+        }
+
+        .nav-group a:hover {
+            color: #d62294;
+        }
+
+        .nav-group a:hover::after {
+            width: 100%; /* underline slides in on hover */
+        }
+
+        
+        .search-signup {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .search-signup {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Wrapper NEVER changes size */
+        .search-wrapper {
+            position: relative;
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Search icon stays fixed */
+        .search-icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: #ffffff;       
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #666;                /* ICON COLOR */
+            z-index: 3;
+            font-size: 16px;
+        }
+
+        /* Input overlays icon (hidden by default) */
+        #search-input {
+            position: absolute;
+            top: 0;
+            left: 0;                 /* 👈 anchor to LEFT */
+            height: 40px;
+            width: 40px;
+            border-radius: 50px;
+            border: 1px solid #ccc;
+            padding: 0 15px 0 40px;  /* 👈 space for icon */
+            outline: none;
+            opacity: 0;
+            pointer-events: none;
+            transition: width 0.3s ease, opacity 0.2s ease;
+        }
+
+        /* Active state */
+        .search-wrapper.active #search-input {
+            width: 160px;
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .signup-btn {
+            background-color: #d62294;
+            color: white;
+            padding: 10px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        
+        .signup-btn:hover {
+            background-color: #d81d45;
+            color: white;
+        }
+
+        /* Smooth hide/show Sign Up */
+        .signup-btn {
+            transition: opacity 0.2s ease;
+        }
+
+        /* Hide Sign Up when search is active */
+        .search-signup.search-active .signup-btn {
+            opacity: 0;
+            pointer-events: none;
+}
+        
+        .content-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 60px;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            flex: 1;
+        }
+        
+        .text-content {
+            flex: 1;
+            max-width: 550px;
+            padding: 0px;
+            background-color: transparent;
+            border-radius: 0;
+            box-shadow: none;
+        }
+        
+        .program-title-top {
+            color: #000000;
+            font-family: 'Ramaraja', serif;
+            font-size: 33px;
+            font-weight: 400;
+            margin-bottom: 0;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+        
+        .program-title-bottom {
+            color: #000000;
+            font-family: 'Ramaraja', serif;
+            font-size: 33px;
+            font-weight: 400;
+            margin-top: 0;
+            margin-bottom: 22px;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+        
+        .learn-more-btn {
+            display: block;
+            padding: 16px 40px;
+            background-color: #d62294;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin: 20px auto 0 auto;
+            text-align: center;
+            width: fit-content;
+            box-shadow: 0px 4px 6.4px 0px rgba(0, 0, 0, 0.64);
+        }
+        
+        .learn-more-btn:hover {
+            background-color: #d11740;
+            transform: translateY(-2px);
+            box-shadow: 0px 6px 8px 0px rgba(0, 0, 0, 0.7);
+
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 160px;
+            right: 150px;
+            width: 420px;
+        }
+
+        /* Shadow layer */
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 20px;   /* offset from main image */
+            left: 20px;  /* offset from main image */
+            width: 100%;
+            height: 100%;
+            border-radius: 100px; /* same as hero-card */
+            background-color: rgba(0,0,0,0.25); /* shadow color */
+            z-index: -1;  /* behind the main card */
+        }
+
+        .hero-card {
+            border-radius: 100px;
+            overflow: hidden;
+            background: #ffffff;
+            /* remove existing box-shadow if you want a solid shadow behind */
+            box-shadow: none;
+        }
+
+        .hero-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .blob {
+            position: fixed;
+            right: -10px;
+            top: -10px;
+
+            width: 900px;
+            height: 1000px;
+
+            z-index: -1;
+
+        }
+
+        .blob svg {
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- 🔵 background -->
+    <table width="100%" height="100%" cellspacing="0" cellpadding="0"
+        style="background: linear-gradient(#d6c6ff, #fff5da); position:fixed; top:0; left:0; z-index:-1;">
+        <tr><td></td></tr>
+    </table>
+
+    <!-- Decorative Blob -->
+    <div class="blob">
+    <svg viewBox="0 0 520 520" preserveAspectRatio="none">
+        <defs>
+        <linearGradient id="hairGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#FFEAE6"/>
+            <stop offset="50%" stop-color="#FFE3DD"/>
+            <stop offset="100%" stop-color="#F39B87"/>
+        </linearGradient>
+        </defs>
+
+        <!-- Curly / hair-like side -->
+        <path
+        d="
+            M520,0
+            L150,0
+            C120,20 180,60 140,90
+            C100,120 180,160 130,200
+            C90,240 190,280 140,320
+            C100,360 200,400 150,440
+            C120,480 180,500 160,520
+            L520,520
+            Z
+        "
+        fill="url(#hairGrad)"
+        />
+    </svg>
+    </div>
+
+    <!-- Navigation -->
+ <nav class="navbar">
+    <div class="nav-container">
+
+        <!-- ✅ LOGO GOES HERE -->
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+
+        <!-- Navigation links -->
+        <div class="nav-group">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <!-- Search & Sign up -->
+    <div class="search-signup">
+        <div class="search-wrapper">
+            <i class="bi bi-search search-icon" id="search-toggle"></i>
+            <input type="text" id="search-input" placeholder="Search..." />
+        </div>
+        <a href="signup.html" class="signup-btn">Sign Up</a>
+    </div>
+</nav>
+
+    <div class="content-wrapper">
+        <div class="text-content">
+
+        <!-- Hero Image Card -->
+        <div class="hero-image">
+            <div class="hero-card">
+                <img src="talking.gif" alt="Mental Health">
             </div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    </body>
+        </div>
+
+            <div class="program-title-top">Mental Health and Wellness digital care</div>
+            <div class="program-title-bottom">Program : OE</div>
+
+            <!-- ⭐ Small Heading -->
+            <p align="left" style="font-size:17px; color:#474747; margin-top:5px; margin-bottom:8px;">
+                <b>Stay Productive & Work Remotely</b>
+            </p>
+
+            <!-- ⭐ Small Description -->
+            <p align="left" style="font-size:13px; color:#444444; line-height:1.4; max-width:400px; margin-bottom:22px;">
+                The key to work-from-home success is to create an enviroment that allows you to focus on the tasks at hand. 
+                Whether you are working from home for the first time.
+            </p>
+
+            <div style="display: flex; justify-content: center; width: 100%;">
+                <a href="https://deconstructingstigma.org/guides/working-from-home" class="learn-more-btn">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+const searchWrapper = document.querySelector('.search-wrapper');
+const searchSignup = document.querySelector('.search-signup'); // 👈 ADD THIS
+const searchIcon = document.getElementById('search-toggle');
+const searchInput = document.getElementById('search-input');
+
+searchIcon.addEventListener('click', () => {
+    searchWrapper.classList.add('active');
+    searchSignup.classList.add('search-active'); // 👈 HIDE SIGN UP
+    searchInput.focus();
+});
+
+searchInput.addEventListener('blur', () => {
+    if (searchInput.value === '') {
+        searchWrapper.classList.remove('active');
+        searchSignup.classList.remove('search-active'); // 👈 SHOW SIGN UP
+    }
+});
+
+searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' && searchInput.value.trim() !== '') {
+        const query = encodeURIComponent(searchInput.value.trim());
+
+        // Redirect to Wikipedia search
+        window.location.href = `https://en.wikipedia.org/wiki/Special:Search?search=${query}`;
+    }
+});
+</script>
 </html>
